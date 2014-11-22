@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if mountpoint -q /target; then
+	cp /ss-local /ss-server /ss-redir /ss-tunnel /target
+else
+	cat <<EOF
+/target is not a mountpoint.
+You can either:
+  - run this container with -v /hostdir:/target
+  - extract these files: /ss-local /ss-server /ss-redir /ss-tunnel
+EOF
+fi
